@@ -1,0 +1,136 @@
+###     Author  ###
+  
+###
+POST http://localhost:9090/api/v1/author/authenticate
+Content-Type: application/json
+
+  {
+    "username": "deepak@gmail.com",
+    "password": "deepak"
+  }
+
+###
+GET http://localhost:63689/v3/api-docs
+
+###  eyJhbGciOiJIUzUxMiJ9.eyJkYXRlIjoiMjAyMi0wNy0yNFQxMjowNDo0NC42OTE1ODQ4MDAiLCJzdWIiOiJtYW5hZ2VyIiwicm9sZSI6InVzZXIiLCJtZXNzYWdlIjoic29tZSBvdGhlciBtZXNzYWdlIiwiZXhwIjoxNjU4NjYyNDg0LCJpYXQiOjE2NTg2NDQ0ODR9.1Hw-pizTqK6KFfOxwQQmSzyW6uYdVksMgk62cxiUXkoruexhE1POKwe0KrGfPjS18kIsnYs3yt-nQPoFGAyZiw
+GET http://localhost:9090/api/v1/author/fetch-all-author
+
+
+###  
+GET http://localhost:9090/api/v1/author/deepak@gmail.com/books
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJkYXRlIjoiMjAyMi0wOC0wNlQxMzo1MTo0NS4zMDE3NTM1MDAiLCJzdWIiOiJkZWVwYWtAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJtZXNzYWdlIjoic29tZSBvdGhlciBtZXNzYWdlIiwiZXhwIjoxNjU5NzkyMTA1LCJpYXQiOjE2NTk3NzQxMDV9.iii9MpiyMRRqP-M6Th4EwOp-woPagCOnoNECa82Ok6UkjNsdFffT-OQanmT3VS_zAyg87SpUpE3w3KWzM1behQ
+
+
+###
+GET http://localhost:9090/api/v1/author/fetch-all-author
+
+### fetch book details using BookId without giving author id
+GET http://localhost:9090/api/v1/author/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJkYXRlIjoiMjAyMi0wNy0yOFQxNToyMzozNS41NzM0MzAxMDAiLCJzdWIiOiJkZWVwYWtAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJtZXNzYWdlIjoic29tZSBvdGhlciBtZXNzYWdlIiwiZXhwIjoxNjU5MDIwMDE1LCJpYXQiOjE2NTkwMDIwMTV9.xzgzQ7Baaj0hF4dNFO9f8fnIcMoXlIxHSYIqseUkZWqEYuFzmLMEfcS6XZsTKxKouDbaxEQqcWouOV5yWjIyFg
+
+###
+POST http://localhost:9090/api/v1/author/signup
+Content-Type: application/json
+
+  {
+    "authorName": "Riya",
+    "authorEmail": "riya@gmail.com",
+    "authorPass": "riya",
+    "gender": "female"
+  }
+###
+
+POST http://localhost:9090/api/v1/author/login
+Content-Type: application/json
+
+  {
+    "authorEmail": "Sandeep@gmail.com",
+    "authorPass": "sandeep"
+  }
+
+###  Create a book by json data and author id
+POST  http://localhost:9090/api/v1/author/prem@gmail.com/books 
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJkYXRlIjoiMjAyMi0wOC0wNlQxMjoxNDoxNC42NDIwMDQiLCJzdWIiOiJwcmVtQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwibWVzc2FnZSI6InNvbWUgb3RoZXIgbWVzc2FnZSIsImV4cCI6MTY1OTc4NjI1NCwiaWF0IjoxNjU5NzY4MjU0fQ.aogwWXZv_7hq-91-mRsJl2D7f6iiD8Q9iuQz8V8JHvQgIRfde0sTvmK_mwWLm838JQPuFoIeXuMIrT4pRI68VA
+Content-Type: application/json
+
+{
+  "title":"Prem Hero",
+  "category":"Science",
+  "price":6893.20,
+  "active":true,
+  "content": "It  main who knows everything",
+  "releaseDate":"16-Jul-2022",
+  "publisher":"Prem Publication"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+####    Payment     ###
+GET  http://localhost:9090/api/v1/payment/fetch-all-payment
+
+###
+POST  http://localhost:9090/api/v1/payment/makePayment
+Content-Type: application/json
+
+{
+    "readerEmail": "deepak@gmail.com",
+    "bookId": 3,
+    "bookPrice": 2789.2,
+    "purchaseDate": "2022-07-23"
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+###    Book      ####
+GET  http://localhost:9090/api/v1/book/fetch-all-book
+### fetch Book Details by giving book Id
+GET  http://localhost:9090/api/v1/book/3
+
+### fetch Book list Details by giving authorid
+GET  http://localhost:9090/api/v1/book/author/3
+###
+GET  http://localhost:9090/api/v1/book/search?category="Fantsy"&author=1&price=265.23&publisher="Bharti Publication"
+
+
+
+
+
+
+
+
+###     Reader     ###
+### getting list of all book for a user
+GET http://localhost:9090/api/v1/reader/deepak@gmail.com/books
+
+### buy a book using book id
+POST http://localhost:9090/api/v1/reader/deepak@gmail.com/2
+
+###
+
+### not using below urls now
+GET http://localhost:9090/api/v1/reader/kumar@gmail.com/books/3
+
+###
+GET http://localhost:9090/api/v1/reader/kumar@gmail.com/books?pid=1
+
+
+
